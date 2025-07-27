@@ -52,36 +52,36 @@ test('Create and validate new Macbook Pro asset', async ({ page }) => {
   await expect(page.getByRole('link', { name: 'Macbook Pro 13"', exact: true })).toBeVisible();
 
   // Step 8: Navigate to History tab 
-await page.getByRole('link', { name: 'History' }).click();
+  await page.getByRole('link', { name: 'History' }).click();
 
-// Validate 'create new' entry exists
-const createNewRow = page.locator('table tbody tr', { hasText: 'create new' });
-await expect(createNewRow).toBeVisible();
-// Validate 'checkout' entry exists
-const checkoutRow = page.locator('table tbody tr', { hasText: 'checkout' });
-await expect(checkoutRow).toBeVisible();
+  // Validate 'create new' entry exists
+  const createNewRow = page.locator('table tbody tr', { hasText: 'create new' });
+  await expect(createNewRow).toBeVisible();
+  // Validate 'checkout' entry exists
+  const checkoutRow = page.locator('table tbody tr', { hasText: 'checkout' });
+  await expect(checkoutRow).toBeVisible();
 
 
  // Step 9: Logout Prodecure 
  // Note: This is important for smooth running of multiple test case in the future. 
 
  // Wait for UI to settle
-await page.waitForLoadState('networkidle');
-// Locate the Admin User in the top navigation (dropdown toggle)
-const adminUserLink = page.locator('nav a.dropdown-toggle', { hasText: 'Admin User' });
-await adminUserLink.click();
-// Now click Logout (after expanding sidebar if necessary)
-const sidebarToggle = page.locator('a.sidebar-toggle.btn.btn-white');
-if (await sidebarToggle.isVisible()) {
+  await page.waitForLoadState('networkidle');
+  // Locate the Admin User in the top navigation (dropdown toggle)
+  const adminUserLink = page.locator('nav a.dropdown-toggle', { hasText: 'Admin User' });
+  await adminUserLink.click();
+  // Now click Logout (after expanding sidebar if necessary)
+  const sidebarToggle = page.locator('a.sidebar-toggle.btn.btn-white');
+  if (await sidebarToggle.isVisible()) {
     await sidebarToggle.click();
     await page.waitForTimeout(500);
 }
 
-// Trigger logout form submission via JS
-await page.evaluate(() => {
+  // Trigger logout form submission via JS
+  await page.evaluate(() => {
     const logoutForm = document.getElementById('logout-form') as HTMLFormElement;
     if (logoutForm) logoutForm.submit();
-});
+  });
 
 
 });
