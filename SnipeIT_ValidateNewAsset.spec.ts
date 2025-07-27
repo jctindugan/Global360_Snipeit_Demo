@@ -62,10 +62,10 @@ test('Create and validate new Macbook Pro asset', async ({ page }) => {
   await expect(checkoutRow).toBeVisible();
 
 
- // Step 9: Logout Prodecure 
- // Note: This is important for smooth running of multiple test case in the future. 
+  // Step 9: Logout Prodecure 
+  // Note: This is important for smooth running of multiple test case in the future. 
 
- // Wait for UI to settle
+  // Wait for UI to settle
   await page.waitForLoadState('networkidle');
   // Locate the Admin User in the top navigation (dropdown toggle)
   const adminUserLink = page.locator('nav a.dropdown-toggle', { hasText: 'Admin User' });
