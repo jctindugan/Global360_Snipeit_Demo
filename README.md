@@ -3,7 +3,7 @@
 - Description:
 Automation script using Playwright for Snipe-It Open Source Asset Management.
 - Note:
-Use the latest version of .NET and Playwright
+Use the latest version of .NET and Playwright.
 
 # Applicant Details
 - Name: Jennie Lou Tindugan
