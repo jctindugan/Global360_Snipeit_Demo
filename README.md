@@ -14,7 +14,7 @@ Use the latest version of .NET and Playwright.
 Create and validate new Macbook Pro asset
 
 # Test Steps: 
-1. Login to the Snipe-It demo 
+1. Login to the Snipe-It demo website
 2. Navigate to Create New Page
 3. Select 'Asset' 
 4. Fill-out the new asset details

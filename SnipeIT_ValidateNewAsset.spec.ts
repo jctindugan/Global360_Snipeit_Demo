@@ -25,7 +25,7 @@ test('Create and validate new Macbook Pro asset', async ({ page }) => {
   await page.getByRole('option', { name: 'Ready to Deploy' }).click();
 
   // Select first user dynamically from the dropdown 
-  // Note: This is needed to avoid error when re-running script since employee would be unavailable after the first run.
+  // Note: This is needed to avoid error when re-running script since specific employee would be unavailable after the initial run.
   await page.getByRole('combobox', { name: 'Select a User' }).click();
   const userOptions = page.locator('.select2-results__option');
   await expect(userOptions.first()).toBeVisible();
@@ -57,22 +57,19 @@ await page.getByRole('link', { name: 'History' }).click();
 // Validate 'create new' entry exists
 const createNewRow = page.locator('table tbody tr', { hasText: 'create new' });
 await expect(createNewRow).toBeVisible();
-
 // Validate 'checkout' entry exists
 const checkoutRow = page.locator('table tbody tr', { hasText: 'checkout' });
 await expect(checkoutRow).toBeVisible();
 
 
  // Step 9: Logout Prodecure 
- // Note: This is important for smooth running of multiple test case. 
- 
+ // Note: This is important for smooth running of multiple test case in the future. 
+
  // Wait for UI to settle
 await page.waitForLoadState('networkidle');
-
 // Locate the Admin User in the top navigation (dropdown toggle)
 const adminUserLink = page.locator('nav a.dropdown-toggle', { hasText: 'Admin User' });
 await adminUserLink.click();
-
 // Now click Logout (after expanding sidebar if necessary)
 const sidebarToggle = page.locator('a.sidebar-toggle.btn.btn-white');
 if (await sidebarToggle.isVisible()) {
